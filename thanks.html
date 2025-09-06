@@ -1,42 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thanks</title>
+  <title>Thank you!, your email has been sent successfully.</title>
   <style>
     body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
       font-family: Arial, sans-serif;
+      color: #fff;
+    }
+
+    .card {
+      background: #111;
+      padding: 40px;
+      border-radius: 16px;
       text-align: center;
-      margin-top: 100px;
+      transition: border 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .card:hover {
+      border: 2px solid #007BFF; /* Azul brilhante ao passar o mouse */
     }
 
     h1 {
       margin-bottom: 20px;
+      font-size: 2rem;
     }
 
     .back-btn {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 12px 24px;
       font-size: 16px;
-      color: white;
+      color: #fff;
       background-color: #007BFF;
-      border: none;
       border-radius: 8px;
-      cursor: pointer;
       text-decoration: none;
-      transition: background 0.3s;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     .back-btn:hover {
       background-color: #0056b3;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-    
-  <h1>Thanks</h1>
-  <a href="index.html" class="back-btn">Voltar</a>
-
+  <div class="card">
+    <h1>Obrigado pelo contato!</h1>
+    <a href="index.html" class="back-btn">Voltar ao início</a>
+  </div>
 </body>
 </html>
