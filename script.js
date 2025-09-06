@@ -2,22 +2,23 @@
 const chk = document.getElementById('chk');
 
 // -----------------------------
-// Checar tema salvo no localStorage
+// Verifica tema salvo no localStorage
 // -----------------------------
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  document.documentElement.classList.toggle('light', savedTheme === 'light');
-}
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.classList.toggle('light', savedTheme === 'light');
 
-// Atualizar partículas de acordo com o tema salvo
+// Atualiza checkbox para refletir o tema
+if (chk) chk.checked = savedTheme === 'light';
+
+// Define cores das partículas
 const particleColor = savedTheme === 'light' ? "#000000" : "#ffffff";
 const lineColor = savedTheme === 'light' ? "#000000" : "#ffffff";
 
-// Inicializa partículas com cores corretas
+// Inicializa partículas
 particlesJS("particles-container", {
   particles: {
     number: { value: 50, density: { enable: true, value_area: 900 } },
-    color: { value: particleColor }, 
+    color: { value: particleColor },
     shape: {
       type: "circle",
       stroke: { width: 0, color: "#000000" },
@@ -44,20 +45,19 @@ particlesJS("particles-container", {
 });
 
 // -----------------------------
-// Alternar tema ao clicar no toggle
+// Alterna tema ao clicar
 // -----------------------------
-chk.addEventListener('change', () => {
-  const isLight = document.documentElement.classList.toggle('light');
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+if (chk) {
+  chk.addEventListener('change', () => {
+    const isLight = document.documentElement.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
 
-  // Atualizar cores das partículas
-  const particleColor = isLight ? "#000000" : "#ffffff";
-  const lineColor = isLight ? "#000000" : "#ffffff";
-
-  if (window.pJSDom && window.pJSDom.length > 0) {
-    const pJS = window.pJSDom[0].pJS;
-    pJS.particles.color.value = particleColor;
-    pJS.particles.line_linked.color = lineColor;
-    pJS.fn.particlesRefresh();
-  }
-});
+    // Atualiza partículas
+    if (window.pJSDom && window.pJSDom.length > 0) {
+      const pJS = window.pJSDom[0].pJS;
+      pJS.particles.color.value = isLight ? "#000000" : "#ffffff";
+      pJS.particles.line_linked.color = isLight ? "#000000" : "#ffffff";
+      pJS.fn.particlesRefresh();
+    }
+  });
+}
