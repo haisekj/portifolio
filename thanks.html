@@ -1,60 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank you!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thanks</title>
   <style>
+    :root {
+      --neon-blue: #007bff;
+      --card-bg: #010101;
+      --text-color: #ffffff;
+      --text-muted: #bdbdbd;
+    }
+
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      background-color: #000;
+      justify-content: center;
+      background: #000;
       font-family: Arial, sans-serif;
-      color: #fff;
+      color: var(--text-color);
+      overflow: hidden;
     }
 
-    .card {
-      background: #111;
-      padding: 40px;
-      border-radius: 16px;
+    #particles-js {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .thank-card {
+      position: relative;
+      z-index: 1;
+      max-width: 450px;
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
       text-align: center;
-      transition: border 0.3s ease;
-      border: 2px solid transparent;
+      border: 1px solid #1f1f1f;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
     }
 
-    .card:hover {
-      border: 2px solid #007BFF; 
+    .thank-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 68, 255, 0.5);
+      border: 1px solid var(--neon-blue);
     }
 
     h1 {
-      margin-bottom: 20px;
-      font-size: 2rem;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
+      color: var(--text-color);
     }
 
-    .back-btn {
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 16px;
-      color: #fff;
-      background-color: #007BFF;
-      border-radius: 8px;
+    /* -----------------------------
+       Fancy Button Styles
+       ----------------------------- */
+    .type--C {
+      --line_color: #ffffff;
+      --back_color: #007bff;
+    }
+
+    .button {
+      position: relative;
+      z-index: 0;
+      width: 240px;
+      height: 56px;
       text-decoration: none;
-      transition: background 0.3s ease, transform 0.2s ease;
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--line_color);
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+      margin: 0 auto; 
+      display: block;
     }
+    .button__text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+    .button::before,
+    .button::after,
+    .button__text::before,
+    .button__text::after {
+      content: "";
+      position: absolute;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--line_color);
+      transition: all 0.5s ease;
+    }
+    .button::before {
+      top: 0;
+      left: 54px;
+      width: calc(100% - 56px * 2 - 16px);
+    }
+    .button::after {
+      top: 0;
+      right: 54px;
+      width: 8px;
+    }
+    .button__text::before {
+      bottom: 0;
+      right: 54px;
+      width: calc(100% - 56px * 2 - 16px);
+    }
+    .button__text::after {
+      bottom: 0;
+      left: 54px;
+      width: 8px;
+    }
+    .button__line {
+      position: absolute;
+      top: 0;
+      width: 56px;
+      height: 100%;
+      overflow: hidden;
+    }
+    .button__line::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 150%;
+      height: 100%;
+      box-sizing: border-box;
+      border-radius: 300px;
+      border: solid 3px var(--line_color);
+    }
+    .button__line:nth-child(1),
+    .button__line:nth-child(1)::before {
+      left: 0;
+    }
+    .button__line:nth-child(2),
+    .button__line:nth-child(2)::before {
+      right: 0;
+    }
+    .button:hover {
+      letter-spacing: 6px;
+    }
+    .button:hover::before,
+    .button:hover .button__text::before {
+      width: 8px;
+    }
+    .button:hover::after,
+    .button:hover .button__text::after {
+      width: calc(100% - 56px * 2 - 16px);
+    }
+    .button__drow1,
+    .button__drow2 {
+      position: absolute;
+      z-index: -1;
+      border-radius: 16px;
+      transform-origin: 16px 16px;
+    }
+    .button__drow1 {
+      top: -16px;
+      left: 40px;
+      width: 32px;
+      height: 0;
+      transform: rotate(30deg);
+    }
+    .button__drow2 {
+      top: 44px;
+      left: 77px;
+      width: 32px;
+      height: 0;
+      transform: rotate(-127deg);
+    }
+    .button__drow1::before,
+    .button__drow1::after,
+    .button__drow2::before,
+    .button__drow2::after {
+      content: "";
+      position: absolute;
+    }
+    .button__drow1::before {
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 32px;
+      border-radius: 16px;
+      transform-origin: 16px 16px;
+      transform: rotate(-60deg);
+    }
+    .button__drow1::after {
+      top: -10px;
+      left: 45px;
+      width: 0;
+      height: 32px;
+      border-radius: 16px;
+      transform-origin: 16px 16px;
+      transform: rotate(69deg);
+    }
+    .button__drow2::before {
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 32px;
+      border-radius: 16px;
+      transform-origin: 16px 16px;
+      transform: rotate(-146deg);
+    }
+    .button__drow2::after {
+      bottom: 26px;
+      left: -40px;
+      width: 0;
+      height: 32px;
+      border-radius: 16px;
+      transform-origin: 16px 16px;
+      transform: rotate(-262deg);
+    }
+    .button__drow1,
+    .button__drow1::before,
+    .button__drow1::after,
+    .button__drow2,
+    .button__drow2::before,
+    .button__drow2::after {
+      background: var(--back_color);
+    }
+    .button:hover .button__drow1 {
+      animation: drow1 ease-in 0.06s;
+      animation-fill-mode: forwards;
+    }
+    .button:hover .button__drow1::before {
+      animation: drow2 linear 0.08s 0.06s;
+      animation-fill-mode: forwards;
+    }
+    .button:hover .button__drow1::after {
+      animation: drow3 linear 0.03s 0.14s;
+      animation-fill-mode: forwards;
+    }
+    .button:hover .button__drow2 {
+      animation: drow4 linear 0.06s 0.2s;
+      animation-fill-mode: forwards;
+    }
+    .button:hover .button__drow2::before {
+      animation: drow3 linear 0.03s 0.26s;
+      animation-fill-mode: forwards;
+    }
+    .button:hover .button__drow2::after {
+      animation: drow5 linear 0.06s 0.32s;
+      animation-fill-mode: forwards;
+    }
+    @keyframes drow1 {0%{height:0;}100%{height:100px;}}
+    @keyframes drow2 {0%{width:0;opacity:0;}10%{opacity:0;}11%{opacity:1;}100%{width:120px;}}
+    @keyframes drow3 {0%{width:0;}100%{width:80px;}}
+    @keyframes drow4 {0%{height:0;}100%{height:120px;}}
+    @keyframes drow5 {0%{width:0;}100%{width:124px;}}
 
-    .back-btn:hover {
-      background-color: #0056b3;
-      transform: scale(1.05);
-    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Your email has been sent successfully.</h1>
-    <a href="index.html" class="back-btn">back</a>
+  <div id="particles-js"></div>
+
+ <div class="thank-card">
+    <h1>Thank you for your message!</h1>
+    <a href="index.html" class="button type--C">
+      <div class="button__line"></div>
+      <div class="button__line"></div>
+      <span class="button__text">Back to home</span>
+      <div class="button__drow1"></div>
+      <div class="button__drow2"></div>
+    </a>
   </div>
+
+   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#fff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": "#fff", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "repulse": { "distance": 100 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+  </script>
 </body>
 </html>
