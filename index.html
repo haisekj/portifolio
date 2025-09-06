@@ -234,6 +234,16 @@
 <p class="copyright">© 2025 HaiseDev. All rights reserved.</p><br>
 </footer>
 
+    <script>
+const form = document.querySelector(".contact-form");
+const submitBtn = form.querySelector(".submit-btn");
+
+form.addEventListener("submit", function(e) {
+
+    submitBtn.textContent = "Sent!";
+    submitBtn.disabled = true; 
+});
+</script>
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
@@ -242,6 +252,7 @@
 
 </body>
 </html>
+
 
 
 
