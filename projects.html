@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Certificates</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" 
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>  
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+:root {
+  --neon-blue: #0134a3;
+  --neon-pink: #4683f5;
+  --neon-purple: #3876fc;
+  --neon-green: #94eaff;
+
+  --bg: #010101;               
+  --bg-secondary: #0a0a0a;     
+  --nav-bg: rgba(10,10,10,0.8);
+  --footer-bg: #0a0a0a;
+
+  --text-color: #eee;          
+  --text-muted: #ccc;          
+
+  --card-bg: var(--bg);
+  --border-color: #000000;
+  --input-bg: #222;
+
+  --cta-text: #ffffff;
+  --ball-bg: #ffffff;
+
+  --particle-color: #ffffff;
+  --scroll-thumb: var(--neon-purple);
+}
+
+:root.light {
+  --neon-blue: #005bff;
+  --neon-pink: #4683f5;
+  --neon-purple: #3876fc;
+  --neon-green: #94eaff;
+
+  --bg: #f2f6fb;
+  --bg-secondary: #e9eef6;
+  --nav-bg: rgba(255,255,255,0.8);
+  --footer-bg: #f0f2f7;
+
+  --text-color: #111;
+  --text-muted: #333;
+
+  --card-bg: #ffffff;
+  --border-color: #d9dfe9;
+  --input-bg: #fff;
+
+  --cta-text: #111;
+  --ball-bg: #111;
+
+  --particle-color: #000000;
+  --scroll-thumb: var(--neon-blue);
+}
+
+body.dark {
+  --bg: #365077; 
+}
+
+/* -----------------------------
+   Reset and base
+   ----------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--bg);
+  overflow-x: hidden;
+  transition: background 0.3s linear, color 0.3s linear;
+}
+
+/* -----------------------------
+   Toggle switch
+   ----------------------------- */
+.checkbox {
+opacity: 0;
+position: absolute;
+}
+
+
+.label {
+background-color: var(--bg-secondary);
+border-radius: 50px;
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 5px;
+position: relative;
+height: 26px;
+width: 50px;
+transform: scale(1.1);
+}
+
+
+.label .ball {
+background-color: var(--ball-bg);
+border-radius: 50%;
+position: absolute;
+top: 2px;
+left: 2px;
+height: 22px;
+width: 22px;
+transform: translateX(0px);
+transition: transform 0.2s linear, background 0.2s linear;
+}
+
+
+.checkbox:checked + .label .ball {
+transform: translateX(24px);
+}
+
+
+.fa-moon, .fa-sun {
+color: var(--text-color);
+}
+
+/* -----------------------------
+   Navbar
+   ----------------------------- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3rem 5%;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(5px);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(0, 136, 255, 0.3);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--neon-blue);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* -----------------------------
+   Partículas / canvas
+   ----------------------------- */
+canvas { display: block; }
+
+#particles-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+</style>
+
+</head>
+<body>
+<div id="particles-container"></div>
+
+<nav>
+    <div class="logo">HAISE <span>DEV</span></div>
+    <div class="nav-links">
+        <body>
+    <div>
+      <input type="checkbox" class="checkbox" id="chk" />
+      <label class="label" for="chk">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+        <div class="ball"></div>
+      </label>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+const chk = document.getElementById('chk');
+
+// alternar tema
+chk.addEventListener('change', () => {
+  document.documentElement.classList.toggle('light');
+
+  const isLight = document.documentElement.classList.contains('light');
+  const particleColor = isLight ? "#000000" : "#ffffff";
+  const lineColor = isLight ? "#000000" : "#ffffff";
+
+  if (window.pJSDom && window.pJSDom.length > 0) {
+    const pJS = window.pJSDom[0].pJS;
+
+    pJS.particles.color.value = particleColor;
+    pJS.particles.line_linked.color = lineColor;
+
+    pJS.fn.particlesRefresh();
+  }
+});
+
+// partículas
+particlesJS("particles-container", {
+  particles: {
+    number: { value: 50, density: { enable: true, value_area: 900 } },
+    color: { value: "#ffffff" }, 
+    shape: {
+      type: "circle",
+      stroke: { width: 0, color: "#000000" },
+      polygon: { nb_sides: 5 }
+    },
+    opacity: { value: 0.5 },
+    size: { value: 3, random: true },
+    line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 1, width: 1 },
+    move: { enable: true, speed: 3, out_mode: "out" }
+  },
+  interactivity: {
+    detect_on: "canvas",
+    events: {
+      onhover: { enable: true, mode: "repulse" },
+      onclick: { enable: true, mode: "push" },
+      resize: true
+    },
+    modes: {
+      repulse: { distance: 120, duration: 0.2 },
+      push: { particles_nb: 4 }
+    }
+  },
+  retina_detect: true
+});
+
+
+</script>
+
+
+</body>
+</html>
