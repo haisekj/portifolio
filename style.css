@@ -433,9 +433,10 @@ nav {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
   gap: 2rem;
   margin-top: 0;
+  justify-content: center;
 }
 
 .project-card {
@@ -453,7 +454,32 @@ nav {
   border: 1px solid var(--neon-blue);
 }
 
-.project-img { width: 100%; height: 200px; object-fit: cover; }
+.projects-btn-container {
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  margin-top: 2rem;        /* distância dos cards */
+}
+
+.projects-btn {
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+  color: var(--cta-text);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 68, 255, 0.5);
+}
+
+.projects-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0, 68, 255, 0.5);
+  background-color: var(--neon-pink);
+}
+
+
+.project-img { width: 100%; height: 250px; object-fit: cover; }
 .project-info { padding: 1.5rem; }
 .project-title { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--neon-blue); }
 .project-description { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
@@ -464,14 +490,81 @@ nav {
 /* -----------------------------
    Certificates
    ----------------------------- */
-.certificates { padding: 5rem 5%; position: relative; }
-.certificates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin-top: 0; }
-.certificate-card { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; transition: transform 0.3s ease; position: relative; border: 1px solid #1f1f1f; }
-.certificate-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0, 68, 255, 0.5); border: 1px solid var(--neon-blue); }
-.certificate-img { width: 100%; height: auto; object-fit: cover; }
-.certificate-info { padding: 1.5rem; }
-.certificate-title { font-size: 1.3rem; text-align: center; margin-bottom: 0.5rem; color: var(--text-color); }
-.certificate-description { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+
+.certificates {
+  padding: 5rem 5%;
+  position: relative;
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, auto)); /* cards responsivos */
+  gap: 2rem;
+  margin-top: 0;
+  justify-content: center; /* centraliza os cards */
+}
+
+.certificate-card {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  position: relative;
+  border: 1px solid #1f1f1f;
+}
+
+.certificate-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 68, 255, 0.5);
+  border: 1px solid var(--neon-blue);
+}
+
+.certificate-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.certificate-info {
+  padding: 1.5rem;
+}
+
+.certificate-title {
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.certificate-description {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.certificates-btn-container {
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  margin-top: 2rem;        /* distância dos cards */
+}
+
+.certificates-btn {
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+  color: var(--cta-text);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 68, 255, 0.5);
+}
+
+.certificates-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0, 68, 255, 0.5);
+  background-color: var(--neon-pink);
+}
 
 /* -----------------------------
    Contact / Forms
